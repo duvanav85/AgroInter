@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "dist/AgroInter/browser/browser/index.html" }
+  ]
+}
