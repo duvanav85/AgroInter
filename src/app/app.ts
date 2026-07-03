@@ -27,14 +27,7 @@ export class App implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit(): void {
-    // window.onscroll = function () {
-    //   const scrollPage = document.getElementById('toolbar-fixed');
-    //   if (window.scrollY > 0 && scrollPage) {
-    //     scrollPage.classList.add('fixed-header')
-    //   } else if (scrollPage) {
-    //     scrollPage.classList.remove('fixed-header');
-    //   }
-    // };
+
   }
 
   initLoading(): void {
