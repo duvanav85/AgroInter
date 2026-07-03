@@ -1,0 +1,19 @@
+.alert-box  {
+    padding: 7px 13px;
+    display: flex;
+    align-items: center;
+
+    label  {
+        margin: 0 0 1px 5px;
+        font-size: 14px;
+        line-height: 1.5715;
+    }
+
+    &.info  {
+        background-color: #e6f7ff;
+        border: 1px solid #91d5ff;
+        svg  {
+            color: #1890ff;
+        }
+    }
+}

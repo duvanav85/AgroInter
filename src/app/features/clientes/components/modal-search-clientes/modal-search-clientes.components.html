@@ -1,0 +1,156 @@
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel>
+      <mat-expansion-panel-header>
+          <mat-panel-title>
+            Búsqueda Avanzada
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-card class="classCardFilter">
+          <mat-card-content>
+              <form [formGroup]="myForm" autocomplete="off">
+                  <div>
+                      <mat-form-field appearance="outline" class="classCardFilter-input">
+                          <mat-label>
+                             Cedula
+                          </mat-label>
+                          <input matInput formControlName="cedula">
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="classCardFilter-input">
+                          <mat-label>
+                             Nombre
+                          </mat-label>
+                          <input matInput formControlName="nombre">
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="classCardFilter-input">
+                          <mat-label>
+                             Apellidos
+                          </mat-label>
+                          <input matInput formControlName="apellidos">
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="classCardFilter-input">
+                        <mat-label>Tipo Identificación</mat-label>
+                        <mat-select formControlName="idtipo_iden">
+                            <mat-option value="1">Cedula</mat-option>
+                            <mat-option value="2">Cedula Extranjeria</mat-option>
+                            <mat-option value="3">DNI</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="classCardFilter-input">
+                        <mat-label>Tipo Contacto</mat-label>
+                        <mat-select formControlName="idtipo_contacto">
+                            <mat-option value="1">Cliente</mat-option>
+                            <mat-option value="2">Proveedor</mat-option>
+                            <mat-option value="3">Socio</mat-option>
+                            <mat-option value="3">Artesano</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="classCardFilter-input">
+                        <mat-label>Tipos Ciiu</mat-label>
+                        <mat-select formControlName="idtipo_ciiu">
+                            <mat-option value="1">Agricultura, ganadería, caza y actividades de servicios conexas</mat-option>
+                            <mat-option value="2">Cultivos agrícolas transitorios</mat-option>
+                            <mat-option value="3">Cultivo de cereales (excepto arroz), legumbres y semillas oleaginosas</mat-option>
+                            <mat-option value="4">Cultivo de arroz</mat-option>
+                            <mat-option value="5">Cultivo de hortalizas, raíces y tubérculos</mat-option>
+                            <mat-option value="6">Cultivo de tabaco</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="classCardFilter-input">
+                        <mat-label>Agencia</mat-label>
+                        <mat-select formControlName="idagencia">
+                            <mat-option value="1">Ciudad</mat-option>
+                            <mat-option value="2">Pueblo</mat-option>
+                            <mat-option value="3">Campo</mat-option>
+                            <mat-option value="4">Terreno</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="classCardFilter-input">
+                        <mat-label>Ejecutivo Cuentas</mat-label>
+                        <mat-select formControlName="idejec_cuenta">
+                            <mat-option value="1">Clinetes internos</mat-option>
+                            <mat-option value="2">Clientes Externos</mat-option>
+                            <mat-option value="3">Personal Corporativos</mat-option>
+                            <mat-option value="4">Personal Colectivo</mat-option>
+                            <mat-option value="5">Extencion</mat-option>
+                            <mat-option value="6">Anexos</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="classCardFilter-input">
+                        <mat-label>Zona</mat-label>
+                        <mat-select formControlName="idejec_cuenta">
+                            <mat-option value="1">Centro</mat-option>
+                            <mat-option value="2">Parque</mat-option>
+                            <mat-option value="3">Oriente</mat-option>
+                            <mat-option value="4">Occidente</mat-option>
+                            <mat-option value="5">Norte</mat-option>
+                            <mat-option value="6">Sur</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="classCardFilter-input">
+                        <mat-label>Tipo Terceros</mat-label>
+                        <mat-select formControlName="idtipo_tercero">
+                            <mat-option value="1">Internos</mat-option>
+                            <mat-option value="2">Externos</mat-option>
+                            <mat-option value="3">Cliente Principal</mat-option>
+                            <mat-option value="4">Cliente Exclusivo</mat-option>
+                            <mat-option value="5">Academico</mat-option>
+                            <mat-option value="6">Formador</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+
+                      <mat-form-field appearance="outline" class="classCardFilter-input">
+                        <mat-label>Gran Contribuyente</mat-label>
+                        <mat-select formControlName="gran_contribuyente">
+                            <mat-option value="true">Si</mat-option>
+                            <mat-option value="false">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                     <mat-form-field appearance="outline" class="classCardFilter-input">
+                        <mat-label>Autoretenedor</mat-label>
+                        <mat-select formControlName="autoretenedor">
+                            <mat-option value="true">Si</mat-option>
+                            <mat-option value="false">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                  </div>
+
+                  <div class="button-container">
+                      <button type="button" mat-flat-button color="primary" (click)="clearSearch()">
+                        <mat-icon>delete</mat-icon>
+                        Limpiar
+                      </button>
+
+                      <button type="button" mat-flat-button color="primary" (click)="advancedSearch()" >
+                          <mat-icon>search</mat-icon>
+                        Buscar
+                      </button>
+                  </div>
+              </form>
+          </mat-card-content>
+      </mat-card>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<div class="table-buttons">
+  <button mat-flat-button color="primary" (click)="addClientes()">
+    <mat-icon>add</mat-icon>
+     Crear
+  </button>
+  <button mat-flat-button color="primary" (click)="downloadData()">
+    <mat-icon>download</mat-icon>
+    Descargar
+  </button>
+</div>
+

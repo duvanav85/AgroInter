@@ -1,0 +1,15 @@
+.mat-input-element:disabled,
+.mat-mdc-form-field-type-mat-native-select.mat-mdc-form-field-disabled .mat-mdc-form-field-infix::after {
+  color: currentColor;
+}
+
+.mat-mdc-form-field-appearance-outline.mat-mdc-form-field-disabled {
+  .mat-mdc-input-element,
+  .mdc-floating-label {
+    color: rgba(0, 0, 0, .6) !important;
+  }
+  .mat-mdc-form-field-flex,
+  .mdc-text-field--outlined {
+    background: whitesmoke;
+  }
+}

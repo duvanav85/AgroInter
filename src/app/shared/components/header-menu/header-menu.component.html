@@ -1,0 +1,145 @@
+
+@if (backgroundBlock) {
+  <mat-toolbar color="secondary" class="mat-elevation-z8">
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+  <mat-toolbar id="toolbar-fixed" color="primary" class="mat-elevation-z8">
+    <button mat-icon-button class="m-btn-menu ml-1" (click)="sidenav.toggle()">
+      @if (sidenav.opened) {
+      <mat-icon fontIcon="close" />
+      } @else {
+      <mat-icon fontIcon="menu" />
+      }
+    </button>
+    <a class="navbar-brand-logo" routerLink="">
+      <img src="assets/img/InterAgroF1.png" alt="logo" class="" />
+    </a>
+    <span class="example-spacer"></span>
+    <div class="d-flex">
+      <a class="btn-secondary-hover mr-3" [matMenuTriggerFor]="menuUser">
+        <mat-icon class="">account_circle</mat-icon>
+        {{ name | titlecase}}
+      </a>
+      <mat-menu #menuUser="matMenu">
+        <button class="custom-menu-exit" mat-menu-item (click)="logOut()">
+          <span class="button-content">
+            <mat-icon fontIcon="logout"></mat-icon>
+            <span class="button-text">Salir</span>
+          </span>
+        </button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav">
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+          <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding matTreeNodePaddingIndent="30">
+            <button mat-button (click)="clickNode(node)">
+              <span class="ml-2">{{ node.name }}</span>
+              <mat-icon class="mat-icon-rtl-mirror" disabled></mat-icon>
+            </button>
+          </mat-tree-node>
+          <mat-tree-node class="mt-2" *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding
+            matTreeNodePaddingIndent="30">
+            <button mat-button matTreeNodeToggle (click)="clickNodeParent(node)">
+              <mat-icon class="mat-icon-rtl-mirror">
+                {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+              </mat-icon>
+              <mat-icon class="ml-1 material-icons-outlined" fontIcon="{{getIcon(node.name)}}" />
+              <span class="ml-2"> {{ node.name }}</span>
+            </button>
+          </mat-tree-node>
+        </mat-tree>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="min-height: 89.2vh">
+      @if(isVisible()) {
+        <div class="page-heading">
+            <h3>Gestión de visitas técnicas AGRO</h3>
+        </div>
+        <div class="page-content">
+          <section class="row">
+            <div class="col-12 col-lg-9">
+              <div class="row">
+                <div class="col-6 col-lg-3 col-md-6">
+                  <div class="card">
+                    <div class="card-body px-3 py-4-5">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="stats-icon purple">
+                            <mat-icon fontIcon="groups" fontSize="large"></mat-icon>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                          <h6 class="text-muted font-semibold">Clientes</h6>
+                          <h6 class="font-extrabold mb-0">?</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-3 col-md-6">
+                  <div class="card">
+                    <div class="card-body px-3 py-4-5">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="stats-icon green">
+                                <mat-icon fontIcon="format_list_bulleted_add" fontSize="large"></mat-icon>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h6 class="text-muted font-semibold">G. Visitas</h6>
+                            <h6 class="font-extrabold mb-0">?</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-3 col-md-6">
+                  <div class="card">
+                    <div class="card-body px-3 py-4-5">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="stats-icon blue">
+                            <mat-icon fontIcon="real_estate_agent" fontSize="large"></mat-icon>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h6 class="text-muted font-semibold">Nros. Fincas</h6>
+                            <h6 class="font-extrabold mb-0">?</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6 col-lg-3 col-md-6">
+                  <div class="card">
+                    <div class="card-body px-3 py-4-5">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <div class="stats-icon red">
+                              <mat-icon fontIcon="add_photo_alternate"></mat-icon>
+                          </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h6 class="text-muted font-semibold">Visitas</h6>
+                            <h6 class="font-extrabold mb-0">?</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      }
+      <div>
+        <router-outlet />
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+}

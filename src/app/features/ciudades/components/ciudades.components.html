@@ -1,0 +1,16 @@
+<div class="container-grid viewMenuComplet">
+
+  <div class="grid-header">
+    <h1 class="title">Ciudades</h1>
+  </div>
+
+  <div class="mt-4" style="margin-bottom: 1.5rem;">
+    <app-modal-search-ciudades (setDataFiltro)="addFilter($event)"></app-modal-search-ciudades>
+  </div>
+
+  @if(ciudades | async; as result){
+  <div class="mt-4">
+    <app-table-ciudades [dataSource]="result" (sendDataPagination)="addPagination($event)"></app-table-ciudades>
+  </div>
+  }
+</div>

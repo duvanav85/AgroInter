@@ -1,0 +1,16 @@
+<div class="container-grid viewMenuComplet">
+
+  <div class="grid-header">
+    <h1 class="title">Veredas</h1>
+  </div>
+
+  <div class="mt-4" style="margin-bottom: 1.5rem;">
+    <app-modal-search-veredas (setDataFiltro)="addFilter($event)"></app-modal-search-veredas>
+  </div>
+
+  @if(veredas | async; as result){
+  <div class="mt-4">
+    <app-table-veredas [dataSource]="result" (sendDataPagination)="addPagination($event)"></app-table-veredas>
+  </div>
+  }
+</div>

@@ -1,0 +1,144 @@
+.navbar {
+  background: #379710;
+}
+
+.nav-link {
+  color: #fff !important;
+  font-size: 0.9rem;
+}
+
+.imgBaner {
+  //background-image: url();
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  height: 41px;
+  width: 150px;
+  position: relative;
+}
+
+.hiddenElementMini {
+  display: none !important;
+}
+
+.hiddenElementMax {
+  display: inline !important;
+}
+
+button{
+  text-align: start !important;
+}
+
+.page-content{
+  padding: 35px 0px 0px 250px !important;
+}
+
+.page-heading
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
+.page-heading h3{
+  align-content: center;
+  color: #3f892196;
+  font-weight: bold;
+}
+
+@media (max-width: 992px) {
+  .imgBaner {
+    //background-image: url();
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    height: 31px;
+    width: 130px;
+    position: relative;
+  }
+
+  .hiddenElementMini {
+    display: inline !important;
+    margin-right: -25%;
+  }
+
+  .hiddenElementMax {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  .imgBaner {
+    //background-image: url();
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    height: 40px;
+    width: 138px;
+    position: relative;
+  }
+
+  .hiddenElementMini {
+    display: inline !important;
+  }
+
+  .hiddenElementMax {
+    display: none !important;
+  }
+  .marginElementMax2 {
+    margin-left: -4% !important;
+  }
+}
+.m-btn-menu {
+  color: #379710;
+}
+
+.btn-header {
+  background: none;
+  outline: none;
+  border: none;
+  color: #fff;
+}
+
+.btn-account-mobile {
+  display: none;
+}
+
+.lang {
+  cursor: pointer;
+}
+
+.activeLang {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 980px) {
+  .btn-account-mobile {
+    display: inline;
+  }
+}
+
+
+// Responsive
+@media (max-width: 600px) {
+  .navbar-brand-logo {
+    display: none;
+  }
+}
+
+.custom-menu-exit {
+  width: 180px;
+  display: flex;
+  justify-content: center;
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+}
+.button-text {
+  margin-left: 5px;
+}

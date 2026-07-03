@@ -1,0 +1,17 @@
+<div class="container-grid viewMenuComplet">
+
+  <div class="grid-header">
+    <h1 class="title">Fincas</h1>
+  </div>
+
+  <div class="mt-4" style="margin-bottom: 1.5rem;">
+    <app-modal-search-finca (setDataFiltro)="addFilter($event)"></app-modal-search-finca>
+  </div>
+
+  @if(finca | async; as result){
+  <div class="mt-4">
+    <app-table-finca [dataSource]="result" (sendDataPagination)="addPagination($event)"></app-table-finca>
+  </div>
+  }
+</div>
+

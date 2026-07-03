@@ -1,0 +1,16 @@
+<div class="container-grid viewMenuComplet">
+
+  <div class="grid-header">
+    <h1 class="title">Parámetros</h1>
+  </div>
+
+  <div class="mt-4" style="margin-bottom: 1.5rem;">
+    <app-modal-search-parametros (setDataFiltro)="addFilter($event)"></app-modal-search-parametros>
+  </div>
+
+  @if(parametros | async; as result){
+  <div class="mt-4">
+    <app-table-parametros [dataSource]="result" (sendDataPagination)="addPagination($event)"></app-table-parametros>
+  </div>
+  }
+</div>

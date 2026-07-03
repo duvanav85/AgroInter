@@ -1,0 +1,16 @@
+<div class="container-grid viewMenuComplet">
+
+  <div class="grid-header">
+    <h1 class="title">Tecnicos</h1>
+  </div>
+
+  <div class="mt-4" style="margin-bottom: 1.5rem;">
+    <app-modal-search-tecnico (setDataFiltro)="addFilter($event)"></app-modal-search-tecnico>
+  </div>
+
+  @if(tecnico | async; as result){
+  <div class="mt-4">
+    <app-table-tecnico [dataSource]="result" (sendDataPagination)="addPagination($event)"></app-table-tecnico>
+  </div>
+  }
+</div>

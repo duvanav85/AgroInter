@@ -1,0 +1,17 @@
+<div class="container-grid viewMenuComplet">
+
+  <div class="grid-header">
+    <h1 class="title">Paises</h1>
+  </div>
+
+  <div class="mt-4" style="margin-bottom: 1.5rem;">
+    <app-modal-search-paises (setDataFiltro)="addFilter($event)"></app-modal-search-paises>
+  </div>
+
+  @if(paises | async; as result){
+  <div class="mt-4">
+    <app-table-paises [dataSource]="result" (sendDataPagination)="addPagination($event)"></app-table-paises>
+  </div>
+  }
+</div>
+

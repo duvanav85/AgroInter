@@ -1,0 +1,61 @@
+.flight-booking  {
+    width: 85%;
+    margin: 3rem auto 40px auto;
+
+    .mat-mdc-tab-group  {
+        background-color: #ffffff;
+        -webkit-box-shadow: -2px 4px 5px 1px rgba(189, 182, 189, 1);
+        -moz-box-shadow: -2px 4px 5px 1px rgba(189, 182, 189, 1);
+        box-shadow: -2px 4px 5px 1px rgba(189, 182, 189, 1);
+
+        .mat-mdc-tab-labels  {
+            display: table-row;
+        }
+
+        form .row  {
+            @media (max-width: 992px)  {
+                .m-t-md  {
+                    margin-top: 30px;
+                }
+            }
+
+            @media (max-width: 768px)  {
+                .m-t-xs  {
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+
+    .mat-mdc-tab-label .mat-mdc-tab-label-content  {
+        color: #030303;
+        font-weight: bold;
+    }
+
+    .mat-mdc-tab-body-wrapper  {
+        border-radius: 15px;
+
+        .mat-mdc-tab-body  {
+            .mat-mdc-tab-body-content  {
+                padding: 20px 30px;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+.mat-mdc-tab-group.tab-default  {
+    background-color: #ffffff;
+    border: 1px solid lightgray;
+
+    .mat-mdc-tab-label .mat-mdc-tab-label-content  {
+        color: #030303;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .mat-mdc-tab-body-content  {
+        padding: 30px 30px 20px 30px;
+        overflow: hidden;
+    }
+}

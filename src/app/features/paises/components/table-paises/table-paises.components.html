@@ -1,0 +1,83 @@
+<mat-card class="result-card">
+  <mat-card-header>
+    <mat-card-title class="result-card__title">Resultados</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="result-card__content">
+    @if (dataSource.data && dataSource.data.length > 0) {
+      <div class="result-card__container mat-elevation-z8">
+        <table class="result-card__table" mat-table [dataSource]="dataSource.data" matSort aria-describedby="TableCauses">
+          <ng-container matColumnDef="actions">
+            <th class="result-card__header" mat-header-cell *matHeaderCellDef mat-sort-header>
+              Acción
+            </th>
+            <td class="result-card__cell" mat-cell *matCellDef="let row" (click)="editPaises(row)">
+              <mat-icon class="result-card__icon">edit</mat-icon>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="paisid">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Pais
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.paisid }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Código
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.codigo }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="id_DIAN">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              id_DIAN
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.id_DIAN }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Nombre Pais
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.descripcion }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Active">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Estado
+            </th>
+            <td mat-cell *matCellDef="let row">
+              @if (row.Active) {
+                <span class="status status-approved">
+                  Activo
+                </span>
+              }
+              @if (!row.Active) {
+                <span class="status status-rejected">
+                  Inactivo
+                </span>
+              }
+            </td>
+          </ng-container>
+          <tr class="result-card__row" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr class="result-card__row" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator class="result-card__paginator" #paginator showFirstLastButtons [length]="dataSource.totalItems" [pageIndex]="dataSource.pageNumber!-1"
+          [pageSize]="dataSource.pageSize" [pageSizeOptions]="opPag.pageSizeOptions" (page)="pageChanged($event)">
+        </mat-paginator>
+      </div>
+    }
+    @if (!dataSource.data || dataSource.data.length === 0) {
+      <div>
+        <p class="result-card__empty-message">
+          No hay registros disponibles.
+        </p>
+      </div>
+    }
+  </mat-card-content>
+</mat-card>
+

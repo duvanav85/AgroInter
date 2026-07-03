@@ -1,0 +1,281 @@
+@use "@angular/material/prebuilt-themes/indigo-pink.css";
+@use 'material-icons/iconfont/material-icons.css';
+@use '../assets/sass/grid-table.scss';
+@use '../assets/sass/custom';
+@use '../assets/sass/carousel';
+@use '../assets/sass/menuPassanger';
+@use '../assets/sass/tabPanel';
+@use '../assets/sass/alertBox';
+@use '../assets/sass/radioButton';
+@use '../assets/sass/tabs';
+@use '../assets/sass/formFiled';
+
+*{
+  font-family: "Red Hat Display", sans-serif;
+}
+
+.ant-modal-header  {
+  background-color: #379710;
+}
+
+body  {
+  overflow-x: hidden;
+}
+
+.swal2-title {
+  padding: 0 !important;
+}
+
+.swal2-styled.swal2-confirm  {
+  background-color: #379710;
+  color: #fff;
+  outline: none;
+  border: none;
+}
+
+textarea[disabled] {
+  cursor: default !important;
+  pointer-events: auto !important;
+}
+
+.ant-modal-title,
+.ant-modal-close,
+.ant-modal-close:hover,
+.ant-modal-close:focus  {
+  color: #fff;
+  outline: none;
+  border: none;
+}
+
+.modal-title  {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.modal-img  {
+  width: 300px;
+  margin-bottom: 1rem;
+}
+
+.modal-text  {
+  font-size: 1rem;
+}
+
+.modal-btn,
+.modal-btn:hover,
+.modal-btn:focus  {
+  background-color: #379710;
+  color: #fff;
+  outline: none;
+  border: none;
+}
+
+
+.login-member  {
+  .mat-mdc-form-field  {
+    width: 100%;
+
+    .mat-mdc-form-field-wrapper  {
+        padding-bottom: 0;
+    }
+}
+}
+
+// Modales
+.modal-container {
+  background-color: #ffffff;
+}
+
+.separator {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.form-field {
+  flex: 1;
+}
+
+.form-field-status{
+  width: 33% !important;
+}
+
+
+.full-width {
+  width: 100%;
+}
+
+.text-right{
+  text-align: right !important;
+}
+
+
+@media only screen and (min-width: 724px) {
+  .form-fields {
+    gap: 1rem;
+  }
+
+  .form-status{
+    padding-right: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 724px) {
+  .form-fields {
+    gap: 0.1rem;
+  }
+
+  .form-field-status{
+    width: 100% !important;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .form-fields {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+// Busquedas
+.mat-mdc-form-field {
+  width: 22%;
+}
+
+.classCardFilter {
+  text-align: left !important;
+
+  button:first-child {
+    margin-right: 4rem;
+  }
+}
+
+.table-buttons {
+  text-align: right !important;
+  margin: 1rem 0;
+
+  button:first-child {
+    margin-right: 4rem;
+  }
+}
+.classCardFilter {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .classCardFilter-input {
+    width: 60%;
+  }
+
+  .classCardFilter-input:last-child {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    button {
+      width: 100% !important;
+    }
+  }
+
+  .classCardFilter button:first-child {
+    margin-right: 0rem;
+  }
+
+  .classCardFilter-input {
+    width: 100%;
+  }
+
+  .table-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    button:first-child {
+      margin-right: 0;
+    }
+
+    button {
+      width: 100% !important;
+    }
+
+  }
+}
+
+// Tablas
+.result-card__title{
+  margin: 0 16px 1rem !important;
+  font-family: "Red Hat Display", sans-serif !important;
+}
+
+.result-card__content {
+  padding: 0 24px 16px;
+}
+
+.result-card__container {
+  margin-bottom: 0.5rem;
+}
+
+.result-card__empty-message {
+  margin: 0 10px 0.5rem !important;
+}
+
+.result-card__icon{
+  cursor: pointer;
+  // margin-left: 0.5rem;
+}
+
+.green-icon{
+  color: #00C036;
+  margin-left: 0.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .result-card__title {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .result-card__title {
+    font-size: 1.2rem !important;
+  }
+
+  .result-card__container {
+    overflow-x: auto;
+  }
+
+  .result-card__table {
+    width: 100%;
+  }
+
+  .result-card__title {
+    margin: 0 10px 0.5rem !important;
+  }
+
+  .result-card__content {
+    padding: 0 15px 20px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .result-card__title {
+    font-size: 1rem !important;
+  }
+
+  .result-card__paginator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+}
+
+.cdk-overlay-dark-backdrop-login {
+  background-image: url('../assets/img/Banner-740x494-Help-Center.jpg');
+  background-size: cover;
+}

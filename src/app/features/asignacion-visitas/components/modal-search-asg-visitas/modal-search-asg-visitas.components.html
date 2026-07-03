@@ -1,0 +1,78 @@
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel>
+      <mat-expansion-panel-header>
+          <mat-panel-title>
+            Búsqueda Avanzada
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-card class="classCardFilter">
+        <mat-card-content>
+          <form [formGroup]="myForm" autocomplete="off">
+            <div>
+                <mat-form-field appearance="outline" class="classCardFilter-input">
+                  <mat-label>
+                      Ticket
+                  </mat-label>
+                  <input matInput formControlName="idTicket">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="classCardFilter-input">
+                  <mat-label>
+                      Fecha Visita
+                  </mat-label>
+                  <input matInput formControlName="fecha_visita" type="date">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="classCardFilter-input">
+                  <mat-label>Identificacion Tecnico</mat-label>
+                  <mat-select formControlName="idTecnico">
+                      <mat-option value="101103">101103</mat-option>
+                      <mat-option value="101206">101206</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="classCardFilter-input">
+                  <mat-label>
+                      Número de Convenio
+                  </mat-label>
+                  <input matInput formControlName="nro_convenio">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="classCardFilter-input">
+                  <mat-label>
+                      Fecha Agenda
+                  </mat-label>
+                  <input matInput formControlName="fecha_agenda" type="date">
+                </mat-form-field>
+
+            </div>
+
+            <div class="button-container">
+              <button type="button" mat-flat-button color="primary" (click)="clearSearch()">
+                <mat-icon>delete</mat-icon>
+                Limpiar
+              </button>
+
+              <button type="button" mat-flat-button color="primary" (click)="advancedSearch()" >
+                  <mat-icon>search</mat-icon>
+                Buscar
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<div class="table-buttons">
+  <button mat-flat-button color="primary" (click)="addCause()">
+    <mat-icon>add</mat-icon>
+     Crear
+  </button>
+  <button mat-flat-button color="primary" (click)="downloadData()">
+    <mat-icon>download</mat-icon>
+    Descargar
+  </button>
+</div>
+

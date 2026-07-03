@@ -1,0 +1,95 @@
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel>
+      <mat-expansion-panel-header>
+          <mat-panel-title>
+            Búsqueda Avanzada
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-card class="classCardFilter">
+        <mat-card-content>
+          <form [formGroup]="myForm" autocomplete="off">
+            <div>
+                <mat-form-field appearance="outline" class="classCardFilter-input">
+                  <mat-label>
+                      Estado Ticket
+                  </mat-label>
+                  <input matInput formControlName="edo_ticket">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="classCardFilter-input">
+                  <mat-label>Identificacion Productor</mat-label>
+                  <mat-select formControlName="productorId">
+                      <mat-option value="101103">101103</mat-option>
+                      <mat-option value="101206">101206</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                  <mat-form-field appearance="outline" class="classCardFilter-input">
+                  <mat-label>Predio</mat-label>
+                  <mat-select formControlName="idPredio">
+                      <mat-option value="1">Casa loma</mat-option>
+                      <mat-option value="2">La conda</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="classCardFilter-input">
+                  <mat-label>Departamento</mat-label>
+                  <mat-select formControlName="idDepartamento">
+                    <mat-option value="1">Amazonas</mat-option>
+                    <mat-option value="2">Antioquia</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="classCardFilter-input">
+                  <mat-label>Municipio</mat-label>
+                  <mat-select formControlName="idMunicipio">
+                      <mat-option value="1">Medellin</mat-option>
+                      <mat-option value="2">Rionegro</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="classCardFilter-input">
+                  <mat-label>
+                      Direccion
+                  </mat-label>
+                  <input matInput formControlName="Direccion">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="classCardFilter-input">
+                  <mat-label>Tipo de Cultivo</mat-label>
+                  <mat-select formControlName="idTipoCultivo">
+                    <mat-option value="true">Aguacates</mat-option>
+                    <mat-option value="false">Tomates</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+            </div>
+
+            <div class="button-container">
+              <button type="button" mat-flat-button color="primary" (click)="clearSearch()">
+                <mat-icon>delete</mat-icon>
+                Limpiar
+              </button>
+
+              <button type="button" mat-flat-button color="primary" (click)="advancedSearch()" >
+                  <mat-icon>search</mat-icon>
+                Buscar
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<div class="table-buttons">
+  <button mat-flat-button color="primary" (click)="addCause()">
+    <mat-icon>add</mat-icon>
+     Crear
+  </button>
+  <button mat-flat-button color="primary" (click)="downloadData()">
+    <mat-icon>download</mat-icon>
+    Descargar
+  </button>
+</div>

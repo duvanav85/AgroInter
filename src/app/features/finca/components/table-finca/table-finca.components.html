@@ -1,0 +1,171 @@
+<mat-card class="result-card">
+  <mat-card-header>
+    <mat-card-title class="result-card__title">Resultados</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="result-card__content">
+    @if (dataSource.data && dataSource.data.length > 0) {
+      <div class="result-card__container mat-elevation-z8">
+        <table class="result-card__table" mat-table [dataSource]="dataSource.data" matSort aria-describedby="TableCauses">
+          <ng-container matColumnDef="actions">
+            <th class="result-card__header" mat-header-cell *matHeaderCellDef mat-sort-header>
+              Acción
+            </th>
+            <td class="result-card__cell" mat-cell *matCellDef="let row" (click)="editPaises(row)">
+              <mat-icon class="result-card__icon">edit</mat-icon>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="identificacion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Identificacion
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.identificacion }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="nombre_propietario">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Nombre Propietario
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.nombre_propietario }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="telefono">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Telefono
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.telefono }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="direccion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Direccion
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.direccion }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="idMunicipio">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Municipio
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.idMunicipio }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="vereda">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Vereda
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.Vereda }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="area">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Area
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.area }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="sistema_Productivo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Sistema Productivo
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.sistema_Productivo }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="variedad">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Variedad
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.variedad }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="desindad_Siembra">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Desindad Siembra
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.desindad_Siembra }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="distribucion_planta">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Distribucion Planta
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.distribucion_planta }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="nro_Arboles">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Numero Arboles
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.nro_Arboles }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="registro_ICA">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Registro ICA
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.registro_ICA }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="gobal_Gap">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Gobal GAP
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.gobal_Gap }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="rainforest">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Rainforest
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.rainforest }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="certificadoXX">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Certificado XX
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.certificadoXX }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="certificadoYY">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Certificado YY
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.certificadoXX }}
+            </td>
+          </ng-container>
+          <tr class="result-card__row" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr class="result-card__row" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator class="result-card__paginator" #paginator showFirstLastButtons [length]="dataSource.totalItems" [pageIndex]="dataSource.pageNumber!-1"
+          [pageSize]="dataSource.pageSize" [pageSizeOptions]="opPag.pageSizeOptions" (page)="pageChanged($event)">
+        </mat-paginator>
+      </div>
+    }
+    @if (!dataSource.data || dataSource.data.length === 0) {
+      <div>
+        <p class="result-card__empty-message">
+          No hay registros disponibles.
+        </p>
+      </div>
+    }
+  </mat-card-content>
+</mat-card>
+
+

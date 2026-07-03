@@ -1,0 +1,28 @@
+.container-grid {
+    width: 100%;
+    padding: 2% 4%;
+
+    .grid-header  {
+        width: 100%;
+    }
+
+    .grid-body  {
+        background-color: #FFF;
+        border: 1px solid lightgray;
+        border-radius: 10px;
+        padding: 15px 20px;
+        width: 100%;
+    }
+}
+
+.wrapper-grid  {
+    padding: 3% 6%;
+
+    .wrapper-content  {
+        background-color: #FFFFFF;
+    }
+
+    table.mat-mdc-table  {
+        width: 100%;
+    }
+}

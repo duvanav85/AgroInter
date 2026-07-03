@@ -1,0 +1,16 @@
+<div class="container-grid viewMenuComplet">
+
+  <div class="grid-header">
+    <h1 class="title">Tipos Ciiu</h1>
+  </div>
+
+  <div class="mt-4" style="margin-bottom: 1.5rem;">
+    <app-modal-search-tipos-ciiu (setDataFiltro)="addFilter($event)"></app-modal-search-tipos-ciiu>
+  </div>
+
+  @if(tiposCiiu | async; as result){
+  <div class="mt-4">
+    <app-table-tipos-ciiu [dataSource]="result" (sendDataPagination)="addPagination($event)"></app-table-tipos-ciiu>
+  </div>
+  }
+</div>

@@ -1,0 +1,58 @@
+<div class="p-3 modal-container">
+  @if (isModal) {
+    <div class="header-modal">
+      <h3>{{ getTitle() }}</h3>
+      <mat-icon class="mat-icon-close-modal" (click)="close()">close</mat-icon>
+    </div>
+  }
+
+  <div class="separator"></div>
+
+  <div class="accordion-form">
+    <form [formGroup]="myForm" autocomplete="off">
+      <div class="mt-3 mb-5">
+        <mat-accordion class="example-headers-align" multi>
+          <mat-expansion-panel [expanded]="true" [hideToggle]="true" disabled>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <strong>Zonas</strong>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div class="form-fields">
+
+              <div class="form-field">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Zona</mat-label>
+                  <input matInput formControlName="idzona">
+                </mat-form-field>
+              </div>
+
+              <div class="form-field full-width">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Barrio</mat-label>
+                  <input matInput formControlName="idbarrio">
+                </mat-form-field>
+              </div>
+
+              <div class="form-field full-width">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-label>Nombre Zona</mat-label>
+                  <input matInput formControlName="descripcion">
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="text-right">
+              <button type="button" mat-flat-button color="primary" class="wtotal"
+                (click)="createUpdateZonas()" [disabled]="myForm.invalid">
+                <mat-icon>save</mat-icon>
+                Guardar
+              </button>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </form>
+  </div>
+</div>
