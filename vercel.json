@@ -1,14 +1,12 @@
 {
   "version": 2,
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api/index"
-    }
+    { "source": "/(.*)", "destination": "/api/index" }
   ],
   "functions": {
     "api/index.mjs": {
-      "includeFiles": "dist/AgroInter/**"
+      "includeFiles": "dist/AgroInter/**",
+      "runtime": "nodejs22.x"
     }
   }
 }
