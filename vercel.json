@@ -5,8 +5,7 @@
   ],
   "functions": {
     "api/index.mjs": {
-      "includeFiles": "dist/AgroInter/**",
-      "runtime": "nodejs22.x"
+      "includeFiles": "dist/AgroInter/**"
     }
   }
 }
