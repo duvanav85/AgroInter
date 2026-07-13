@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 //Services
-import { asgvisitaService } from '../../service/asg-visitas-service';
+import { reporteAgendamientosService } from '../../services/reporte-agendamientos-services';
 //Interfaces
-import { asgvisitaInterface, asgvisitaFilter } from '../../interface/asg-visitas-interface';
+import { reporteAgendamientoInterface, reporteAgendamientoFilter } from '../../interface/reporte-agendamientos-interface';
 import { ApiResponse } from '../../../../core/models/dto/apiresponse.interface';
 import { AlertService } from '../../../../shared/services/Alert/alert.service';
 
@@ -21,13 +21,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { cleanAndCapitalizeFirstLettersOpt } from 'src/app/shared/helpers/textProcessingUtils';
-
 
 @Component({
-  selector: 'app-modal-asg-visitas',
-  templateUrl: './modal-asg-visitas.components.html',
-  styles: ``,
+  selector: 'app-modal-reporte-agendamientos',
+  templateUrl: './modal-reporte-agendamientos.components.html',
+  styleUrl: './modal-reporte-agendamientos.components.scss',
   providers: [provideNativeDateAdapter(),
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' } // 'es-ES' fuerza el formato DD/MM/YYYY
   ],
@@ -47,28 +45,36 @@ import { cleanAndCapitalizeFirstLettersOpt } from 'src/app/shared/helpers/textPr
     MatFormFieldModule,
   ],
 })
-export class ModalAsgVisitasComponents
+export class ModalReporteAgendamientosComponents
 {
-  asgvisita       : asgvisitaInterface = {};
-  asgvisitaFilter : asgvisitaFilter={pageNumber:1,pageSize:5}
-  editMode        : boolean;
-  isModal         : boolean = true;
-  myForm          : FormGroup;
+  reporteAgendamientos        : reporteAgendamientoInterface = {};
+  reporteAgendamientosFilter  : reporteAgendamientoFilter={pageNumber:1,pageSize:5}
+  editMode                    : boolean;
+  isModal                     : boolean = true;
+  myForm                      : FormGroup;
 
   constructor(
-    private asgvisitaService            : asgvisitaService,
+    private reporteAgendamientosService : reporteAgendamientosService,
     private formBuilder                 : FormBuilder,
-    private dialogRef                   : MatDialogRef<ModalAsgVisitasComponents>,
+    private dialogRef                   : MatDialogRef<ModalReporteAgendamientosComponents>,
     private alertService                : AlertService,
-    @Inject(MAT_DIALOG_DATA) public data: { editMode: boolean, asgvisita: asgvisitaInterface }
+    @Inject(MAT_DIALOG_DATA) public data: { editMode: boolean, reporteAgendamientos: reporteAgendamientoInterface }
   ) {
     this.myForm = this.formBuilder.group({
-      visitaid        : [''],
+      semaforo        : ['', Validators.required],
       idTicket        : ['', Validators.required],
-      fecha_visita    : [''],
+      estado_ticket   : ['', Validators.required],
+      fecha_visita    : ['', Validators.required],
       idTecnico       : ['', Validators.required],
       nro_convenio    : ['', Validators.required],
-      fecha_agenda    : [''],
+      fecha_agenda    : ['', Validators.required],
+      horario_agenda  : ['', Validators.required],
+      idpropietario   : ['', Validators.required],
+      iddepartamento  : ['', Validators.required],
+      idmunicipio     : ['', Validators.required],
+      idvereda        : ['', Validators.required],
+      idpredio        : ['', Validators.required],
+      idtipo_cultivo  : ['', Validators.required],
     });
 
     this.editMode = data.editMode;
@@ -76,8 +82,10 @@ export class ModalAsgVisitasComponents
 
   ngOnInit(): void {
     if (this.editMode) {
-      this.myForm.patchValue(this.data.asgvisita);
+      this.myForm.patchValue(this.data.reporteAgendamientos);
+      this.myForm.get('semaforo')?.setValidators([Validators.required])
       this.myForm.get('idTicket')?.setValidators([Validators.required])
+      this.myForm.get('estado_ticket')?.setValidators([Validators.required])
       this.myForm.get('fecha_visita')?.setValidators([Validators.required])
       this.myForm.get('idTecnico')?.setValidators([Validators.required])
       this.myForm.get('nro_convenio')?.setValidators([Validators.required])
@@ -90,16 +98,26 @@ export class ModalAsgVisitasComponents
       return;
     }
 
-    this.asgvisita = {
-      idTicket        : this.data.asgvisita?.idTicket,
-      idTecnico       : this.data.asgvisita?.idTecnico,
-      nro_convenio    : this.data.asgvisita?.nro_convenio,
-      fecha_agenda    : this.data.asgvisita?.fecha_agenda,
+    this.reporteAgendamientos = {
+      semaforo        : this.data.reporteAgendamientos?.semaforo,
+      idTicket        : this.data.reporteAgendamientos?.idTicket,
+      estado_ticket   : this.data.reporteAgendamientos?.estado_ticket,
+      fecha_visita    : this.data.reporteAgendamientos?.fecha_visita,
+      idTecnico       : this.data.reporteAgendamientos?.idTecnico,
+      nro_convenio    : this.data.reporteAgendamientos?.nro_convenio,
+      fecha_agenda    : this.data.reporteAgendamientos?.fecha_agenda,
+      horario_agenda  : this.data.reporteAgendamientos?.horario_agenda,
+      idpropietario   : this.data.reporteAgendamientos?.idpropietario,
+      iddepartamento  : this.data.reporteAgendamientos?.iddepartamento,
+      idmunicipio     : this.data.reporteAgendamientos?.idmunicipio,
+      idvereda        : this.data.reporteAgendamientos?.idvereda,
+      idpredio        : this.data.reporteAgendamientos?.idpredio,
+      idtipo_cultivo  : this.data.reporteAgendamientos?.idtipo_cultivo,
     };
 
     let operation = this.editMode ?
-      this.asgvisitaService.updateAsgVisitas(this.asgvisita) :
-      this.asgvisitaService.createAsgVisita(this.asgvisita);
+      this.reporteAgendamientosService.updateReporteAgendamiento(this.reporteAgendamientos) :
+      this.reporteAgendamientosService.createReporteAgendamiento(this.reporteAgendamientos);
 
     operation.subscribe({
       next:(res: ApiResponse<boolean>) => {
@@ -114,7 +132,7 @@ export class ModalAsgVisitasComponents
         }
         this.dialogRef.close();
         this.clearForm();
-        this.getAllAsgVisitas();
+        this.getAllReporteAgendamiento();
 
       },error:(err: any) => {
         this.dialogRef.close();
@@ -124,10 +142,10 @@ export class ModalAsgVisitasComponents
     });
   }
 
-  getAllAsgVisitas():void{
-    this.asgvisitaService.getAllAsgVisita(this.asgvisitaFilter).subscribe({
+  getAllReporteAgendamiento():void{
+    this.reporteAgendamientosService.getAllReporteAgendamientos(this.reporteAgendamientosFilter).subscribe({
       next:(response: any) => {
-        this.asgvisitaService.updateAsgVisitas(response)
+        this.reporteAgendamientosService.updateReporteAgendamientos(response)
         if (!response.succeeded) {
           this.alertService.messageAlert({ message: "Por favor intente más tarde." });
         } else {
@@ -138,7 +156,7 @@ export class ModalAsgVisitasComponents
       },error:(err: any) => {
         this.alertService.messageAlert({ message: "Por favor intente más tarde." });
       }
-  });
+    });
   }
 
   private clearForm(): void {
@@ -150,6 +168,6 @@ export class ModalAsgVisitasComponents
   }
 
   getTitle(): string {
-    return this.editMode ? 'Editar Asignación de Visitas' : 'Crear Asignación de Visitas';
+    return this.editMode ? 'Editar Reporte Agendamientos' : 'Crear Reporte Agendamientos';
   }
 }

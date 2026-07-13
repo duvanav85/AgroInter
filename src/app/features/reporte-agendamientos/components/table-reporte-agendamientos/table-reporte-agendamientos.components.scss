@@ -1,0 +1,57 @@
+.result-card {
+  &__content {
+    padding: 0 !important;
+  }
+
+  &__container {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 65vh; // Ajusta este valor según el espacio disponible en tu vista
+    width: 100%;
+  }
+
+  &__table {
+    width: max-content; // Evita que las columnas se compriman, fuerza el scroll horizontal
+    min-width: 100%;
+  }
+
+  &__row {
+    white-space: nowrap; // Evita que el texto de las celdas se corte en múltiples líneas
+  }
+
+  &__cell,
+  &__header {
+    padding: 0 16px;
+  }
+
+  &__icon {
+    cursor: pointer;
+  }
+
+  &__empty-message {
+    text-align: center;
+    padding: 2rem;
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  &__paginator {
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+    z-index: 10;
+  }
+}
+
+// Fija el header de la tabla al hacer scroll vertical.
+// ::ng-deep es necesario porque mat-header-cell aplica sus propios estilos
+// con encapsulamiento que puede bloquear el position: sticky directo.
+::ng-deep {
+  .result-card__container {
+    .mat-mdc-header-row {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background-color: white;
+    }
+  }
+}

@@ -1,0 +1,109 @@
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel>
+      <mat-expansion-panel-header>
+          <mat-panel-title>
+            Búsqueda Avanzada
+          </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-card class="classCardFilter">
+        <mat-card-content>
+          <form [formGroup]="myForm" autocomplete="off">
+            <div>
+              <mat-form-field appearance="outline" class="classCardFilter-input">
+                <mat-label>Identificacion Propietario</mat-label>
+                <mat-select formControlName="idPropietario">
+                    <mat-option value="101103">101103</mat-option>
+                    <mat-option value="101206">101206</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="classCardFilter-input">
+                <mat-label>Tipo Cultivo</mat-label>
+                <mat-select formControlName="idCultivo">
+                    <mat-option value="1">Aguacate</mat-option>
+                    <mat-option value="2">Papa</mat-option>
+                    <mat-option value="3">Maiz</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="classCardFilter-input">
+                <mat-label>
+                    Ticket
+                </mat-label>
+                <input matInput formControlName="idTicket">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="classCardFilter-input">
+                <mat-label> Fecha de la Visita </mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="fecha_visita">
+                <mat-hint>Fecha de Visita</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="classCardFilter-input">
+                <mat-label>Estado Ticket</mat-label>
+                <mat-select formControlName="idEstadoTicket">
+                    <mat-option value="1">Pendiente</mat-option>
+                    <mat-option value="2">En Progreso</mat-option>
+                    <mat-option value="3">Completado</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="classCardFilter-input">
+                <mat-label>Identificacion Tecnico</mat-label>
+                <mat-select formControlName="idTecnico">
+                    <mat-option value="1">101103</mat-option>
+                    <mat-option value="2">101206</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="classCardFilter-input">
+                <mat-label>Municipio</mat-label>
+                <mat-select formControlName="idMunicipio">
+                    <mat-option value="1">Medellin</mat-option>
+                    <mat-option value="2">Rionegro</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="classCardFilter-input">
+                <mat-label>Vereda</mat-label>
+                <mat-select formControlName="idVereda">
+                    <mat-option value="1">Vereda 1</mat-option>
+                    <mat-option value="2">Vereda 2</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </div>
+
+            <div class="button-container">
+              <button type="button" mat-flat-button color="primary" (click)="clearSearch()">
+                <mat-icon>delete</mat-icon>
+                Limpiar
+              </button>
+
+              <button type="button" mat-flat-button color="primary" (click)="advancedSearch()" >
+                  <mat-icon>search</mat-icon>
+                Buscar
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<div class="table-buttons">
+
+  <!-- <button mat-flat-button color="primary" (click)="addReporteAgendamiento()">
+    <mat-icon>add</mat-icon>
+     Crear
+  </button> -->
+  <button mat-flat-button color="primary" (click)="downloadData()">
+    <mat-icon>download</mat-icon>
+    Descargar
+  </button>
+</div>
+
+

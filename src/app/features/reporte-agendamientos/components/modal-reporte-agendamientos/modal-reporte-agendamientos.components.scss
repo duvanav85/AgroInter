@@ -1,0 +1,24 @@
+.form-fields {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 16px; // espacio horizontal entre columnas
+
+  .form-field {
+    // ocupa 1 columna por defecto (mitad de la fila)
+
+    &.full-width {
+      grid-column: span 2; // ocupa las 2 columnas, queda en su propia fila
+    }
+  }
+}
+
+// Responsive: en pantallas pequeñas, cae a 1 columna
+@media (max-width: 600px) {
+  .form-fields {
+    grid-template-columns: 1fr;
+
+    .form-field.full-width {
+      grid-column: span 1;
+    }
+  }
+}

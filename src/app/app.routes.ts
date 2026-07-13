@@ -17,6 +17,7 @@ import { ClientesComponents } from './features/clientes/components/clientes.comp
 import { VisitaComponents } from './features/visita/components/visita.components';
 import { VeredasComponents } from './features/veredas/components/veredas.components';
 import { AsignacionVisitasComponents } from './features/asignacion-visitas/components/asignacion-visitas.components';
+import { ReporteAgendamientosComponents } from './features/reporte-agendamientos/components/reporte-agendamientos.components';
 
 export const routes: Routes = [
   { path: "auth", component: AuthComponents, pathMatch: 'full' },
@@ -38,7 +39,8 @@ export const routes: Routes = [
       { path: "Tecnico", component: TecnicoComponents, pathMatch: 'full'},
       { path: "Finca",  component: FincaComponents, pathMatch: 'full'},
       { path: "AsignacionVisitas",  component: AsignacionVisitasComponents, pathMatch: 'full'},
-      { path: "Visitas",  component: VisitaComponents, pathMatch: 'full'}
+      { path: "Visitas",  component: VisitaComponents, pathMatch: 'full'},
+      { path: "ReporteAgendamientos",  component: ReporteAgendamientosComponents, pathMatch: 'full'},
     ]
   },
   { path: "*", redirectTo: "", },

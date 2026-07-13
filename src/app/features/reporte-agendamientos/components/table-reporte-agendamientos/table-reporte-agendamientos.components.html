@@ -1,0 +1,205 @@
+<mat-card class="result-card">
+  <mat-card-header>
+    <mat-card-title class="result-card__title">Resultados</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="result-card__content">
+    @if (dataSource.data && dataSource.data.length > 0) {
+      <div class="result-card__container mat-elevation-z8">
+        <table class="result-card__table" mat-table [dataSource]="dataSource.data" matSort aria-describedby="TableCauses">
+          <!-- <ng-container matColumnDef="actions">
+            <th class="result-card__header" mat-header-cell *matHeaderCellDef mat-sort-header>
+              Acción
+            </th>
+            <td class="result-card__cell" mat-cell *matCellDef="let row" (click)="editReporteAgendamientos( row)">
+              <mat-icon class="result-card__icon">edit</mat-icon>
+            </td>
+          </ng-container> -->
+          <ng-container matColumnDef="semaforo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Semaforo
+            </th>
+            <td mat-cell *matCellDef="let row">
+              @if (row.semaforo === 'verde') {
+                <span class="status status-approved">
+                  Dentro del Tiempo
+                </span>
+              }
+              @if (row.semaforo === 'amarillo') {
+                <span class="status status-pending">
+                  Proximo Vencer
+                </span>
+              }
+              @if (row.semaforo === 'rojo') {
+                <span class="status status-rejected">
+                  Vencido
+                </span>
+              }
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="idTicket">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Ticket
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.idTicket }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="estado_ticket">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Estado Ticket
+            </th>
+            <td mat-cell *matCellDef="let row">
+               @if (row.estado_ticket === 'abierto') {
+                <span class="status status-approved">
+                  Abierto
+                </span>
+              }
+              @if (row.estado_ticket === 'en_progreso') {
+                <span class="status status-pending">
+                  En Progreso
+                </span>
+              }
+              @if (row.estado_ticket === 'cerrado') {
+                <span class="status status-rejected">
+                  Cerrado
+                </span>
+              }
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="fecha_visita">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Fecha Visita
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.fecha_visita }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="idTecnico">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Tecnico
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.idTecnico }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nombre_tecnico">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Nombre Tecnico
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.nombre_tecnico }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="apellido_tecnico">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Apellido Tecnico
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.apellido_tecnico }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nro_convenio">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Convenio
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.nro_convenio }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="fecha_agenda">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Fecha Agenda
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.fecha_agenda }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="horario_agenda">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Horario Agenda
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.horario_agenda }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="id_productor">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Productor
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.id_productor }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nombre_productor">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Nombre Productor
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.nombre_productor }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="apellido_productor">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Apellido Productor
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.apellido_productor }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="tipo_documento">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Tipo Documento
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.tipo_documento }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="celular">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Celular
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.celular }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="correo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Correo
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.correo }}
+            </td>
+          </ng-container>
+
+          <tr class="result-card__row" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr class="result-card__row" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator class="result-card__paginator" #paginator showFirstLastButtons [length]="dataSource.totalItems" [pageIndex]="dataSource.pageNumber!-1"
+          [pageSize]="dataSource.pageSize" [pageSizeOptions]="opPag.pageSizeOptions" (page)="pageChanged($event)">
+        </mat-paginator>
+      </div>
+    }
+    @if (!dataSource.data || dataSource.data.length === 0) {
+      <div>
+        <p class="result-card__empty-message">
+          No hay registros disponibles.
+        </p>
+      </div>
+    }
+  </mat-card-content>
+</mat-card>

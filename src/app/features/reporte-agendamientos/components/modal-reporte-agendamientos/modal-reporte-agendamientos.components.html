@@ -1,0 +1,139 @@
+<div class="p-3 modal-container">
+  @if (isModal) {
+    <div class="header-modal">
+      <h3>{{ getTitle() }}</h3>
+      <mat-icon class="mat-icon-close-modal" (click)="close()">close</mat-icon>
+    </div>
+  }
+
+  <div class="separator"></div>
+    <div class="accordion-form">
+      <form [formGroup]="myForm" autocomplete="off">
+        <div class="mt-3 mb-3">
+          <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel [expanded]="true" [hideToggle]="true" disabled>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <strong>Información del Reporte Agendamientos</strong>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div class="form-fields">
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Semaforo</mat-label>
+                    <input matInput formControlName="semaforo">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Ticket</mat-label>
+                    <input matInput formControlName="idTicket">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Estado Ticket</mat-label>
+                    <input matInput formControlName="estado_ticket">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label> Fecha de la Visita </mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="fecha_visita">
+                    <mat-hint>Fecha de Visita</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Tecnico</mat-label>
+                    <input matInput formControlName="idTecnico">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Número de Convenio</mat-label>
+                    <input matInput formControlName="nro_convenio">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Fecha de Agenda</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="fecha_agenda" readonly>
+                    <mat-hint>Fecha de Agenda</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Horario de Agenda</mat-label>
+                    <input matInput formControlName="horario_agenda">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Id Propietario</mat-label>
+                    <input matInput formControlName="idpropietario">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Id Departamento</mat-label>
+                    <input matInput formControlName="iddepartamento">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Id Municipio</mat-label>
+                    <input matInput formControlName="idmunicipio">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Id Vereda</mat-label>
+                    <input matInput formControlName="idvereda">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Id Predio</mat-label>
+                    <input matInput formControlName="idpredio">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field">
+                  <mat-form-field appearance="outline" class="w-100">
+                    <mat-label>Id Tipo de Cultivo</mat-label>
+                    <input matInput formControlName="idtipo_cultivo">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-field full-width text-right">
+                  <button type="button" mat-flat-button color="primary" class="wtotal"
+                    (click)="createUpdateAsgVisita()" [disabled]="myForm.invalid">
+                    <mat-icon>save</mat-icon>
+                    Guardar
+                  </button>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </form>
+    </div>
+  </div>

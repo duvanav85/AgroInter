@@ -1,0 +1,16 @@
+<div class="container-grid viewMenuComplet">
+
+  <div class="grid-header">
+    <h1 class="title"> Reporte Agendamientos </h1>
+  </div>
+
+  <div class="mt-4" style="margin-bottom: 1.5rem;">
+    <app-modal-search-reporte-agendamientos (setDataFiltro)="addFilter($event)"></app-modal-search-reporte-agendamientos>
+  </div>
+
+  @if(reporteAgendamiento | async; as result){
+  <div class="mt-4">
+    <app-table-reporte-agendamientos [dataSource]="result" (sendDataPagination)="addPagination($event)"></app-table-reporte-agendamientos>
+  </div>
+  }
+</div>

@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 //Components
-import { ModalAsgVisitasComponents } from '../modal-asg-visitas/modal-asg-visitas.components';
+import { ModalReporteAgendamientosComponents } from '../modal-reporte-agendamientos/modal-reporte-agendamientos.components';
 //Interfaces
-import { asgvisitaFilter } from '../../interface/asg-visitas-interface';
+import { reporteAgendamientoFilter } from '../../interface/reporte-agendamientos-interface';
 //Material
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -17,12 +17,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
-
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-modal-search-asg-visitas',
-  templateUrl: './modal-search-asg-visitas.components.html',
+  selector: 'app-modal-search-reporte-agendamientos',
+  templateUrl: './modal-search-reporte-agendamientos.components.html',
   styles: ``,
   providers: [provideNativeDateAdapter(),
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' } // 'es-ES' fuerza el formato DD/MM/YYYY
@@ -43,27 +42,29 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dial
     MatFormFieldModule,
   ],
 })
-export class ModalSearchAsgVisitasComponents
+export class ModalSearchReporteAgendamientosComponents
 {
-  @Output() setDataFiltro = new EventEmitter<asgvisitaFilter>();
+  @Output() setDataFiltro = new EventEmitter<reporteAgendamientoFilter>();
   @Output() downloadRequested = new EventEmitter<void>();
 
-  filterPagination: asgvisitaFilter = {};
+  filterPagination: reporteAgendamientoFilter = {};
 
   myForm: FormGroup = this._formBuilder.group({
-    visitaid          :[null],
+    idPropietario     :[null],
+    idCultivo         :[null],
     idTicket          :[null],
     fecha_visita      :[null],
+    idEstadoTicket    :[null],
     idTecnico         :[null],
-    nro_convenio      :[null],
-    fecha_agenda      :[null],
+    idMunicipio       :[null],
+    idVereda          :[null],
   });
 
   constructor(private _formBuilder: FormBuilder,
               private dialog: MatDialog) { }
 
-  addCause(): void {
-    const dialogRef = this.dialog.open(ModalAsgVisitasComponents, {
+  addReporteAgendamiento(): void {
+    const dialogRef = this.dialog.open(ModalReporteAgendamientosComponents, {
       width         : '70%',
       maxHeight     : '80vh',
       disableClose  : true,
@@ -75,14 +76,16 @@ export class ModalSearchAsgVisitasComponents
 
   advancedSearch(): void {
     this.filterPagination={
-      visitaid          : this.myForm.get('visitaid')?.value || '',
+      idpropietario     : this.myForm.get('idPropietario')?.value || '',
+      idtipo_cultivo    : this.myForm.get('idCultivo')?.value || '',
       idTicket          : this.myForm.get('idTicket')?.value || '',
       fecha_visita      : this.myForm.get('fecha_visita')?.value || '',
+      estado_ticket     : this.myForm.get('idEstadoTicket')?.value || '',
       idTecnico         : this.myForm.get('idTecnico')?.value || '',
-      nro_convenio      : this.myForm.get('nro_convenio')?.value || '',
-      fecha_agenda      : this.myForm.get('fecha_agenda')?.value || '',
-      pageNumber: 1,
-      pageSize  : 5
+      municipio         : this.myForm.get('idMunicipio')?.value || '',
+      vereda            : this.myForm.get('idVereda')?.value || '',
+      pageNumber        : 1,
+      pageSize          : 5
     }
     this.setDataFiltro.emit(this.filterPagination);
   }
@@ -90,14 +93,16 @@ export class ModalSearchAsgVisitasComponents
   clearSearch(): void {
     this.myForm.reset();
     this.filterPagination={
-      visitaid          : '',
+      idpropietario     : 0,
+      idtipo_cultivo    : 0,
       idTicket          : 0,
       fecha_visita      : '',
       idTecnico         : 0,
-      nro_convenio      : 0,
-      fecha_agenda      : '',
-      pageNumber: 1,
-      pageSize  : 5
+      estado_ticket     : '',
+      municipio         : 0,
+      vereda            : 0,
+      pageNumber        : 1,
+      pageSize          : 5
     }
     this.setDataFiltro.emit(this.filterPagination);
   }

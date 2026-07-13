@@ -30,8 +30,11 @@
 
               <div class="form-field full-width">
                 <mat-form-field appearance="outline" class="w-100">
-                  <mat-label>fecha de la Visita</mat-label>
-                  <input matInput formControlName="fecha_visita" readonly>
+                  <mat-label> Fecha de la Visita </mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="fecha_visita">
+                  <mat-hint>Fecha de Visita</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
                 </mat-form-field>
               </div>
 
@@ -52,7 +55,10 @@
               <div class="form-field full-width">
                 <mat-form-field appearance="outline" class="w-100">
                   <mat-label>Fecha de Agenda</mat-label>
-                  <input matInput formControlName="fecha_agenda" readonly>
+                  <input matInput [matDatepicker]="picker1" formControlName="fecha_agenda" readonly>
+                  <mat-hint>Fecha de Agenda</mat-hint>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                  <mat-datepicker #picker1></mat-datepicker>
                 </mat-form-field>
               </div>
             </div>

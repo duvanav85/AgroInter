@@ -22,7 +22,7 @@ export const listMenuItems : any[] = [
       { name: "Finca"                   , link: "/Finca" },
       { name: "Asignación de Visitas"   , link: "/AsignacionVisitas" },
       { name: "Visita"                  , link: "/Visitas" },
-      { name: "Reporte de Agendamiento" , link: "/exoneration" },
+      { name: "Reporte de Agendamiento" , link: "/ReporteAgendamientos" },
       { name: "Indicadores"             , link: "/courtesy-ticket" }
     ]
   },
